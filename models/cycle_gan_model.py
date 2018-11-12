@@ -44,7 +44,7 @@ class CycleGANModel(BaseModel):
         # Code (paper): G_A (G), G_B (F), D_A (D_Y), D_B (D_X)
         # for collab setup, dirty trick
         print("hello gpu_ids", self.gpu_ids[0])
-        self.gpu_ids2 = [str(i) for i in range(len(self.gpu_ids))]
+        self.gpu_ids2 = ['gpu' for i in range(len(self.gpu_ids))]
         print(self.gpu_ids2)
         self.netG_A = networks.define_G(opt.input_nc, opt.output_nc, opt.ngf, opt.netG, opt.norm,
                                         not opt.no_dropout, opt.init_type, opt.init_gain, self.gpu_ids)
