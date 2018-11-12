@@ -1,0 +1,16 @@
+# TODO List 
+
+## Theory
+- [ ] Read CycleGAN paper
+- [ ] Comment paper Q&A 
+
+## Understand implementation
+- [ ] Code review
+
+## Development
+- [ ] Inference from pre-trained models
+- [ ] Google Colab integration (inference and train)
+- [ ] Google Cloud VM integration (inference and train)
+
+## Experiments
+
