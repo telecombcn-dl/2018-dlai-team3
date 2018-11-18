@@ -43,8 +43,9 @@ class CycleGANModel(BaseModel):
         # load/define networks # The naming conversion is different from those used in the paper
         # Code (paper): G_A (G), G_B (F), D_A (D_Y), D_B (D_X)
         # for collab setup, dirty trick
+        #Dlai project modification
         print("hello gpu_ids", self.gpu_ids[0])
-        self.gpu_ids2 = ['cuda' for i in range(len(self.gpu_ids))]
+        self.gpu_ids2 = ['cuda:'+str(i) for i in self.gpu_ids]
         print(self.gpu_ids2)
         #self.gpu_ids = self.gpu_ids2
         self.netG_A = networks.define_G(opt.input_nc, opt.output_nc, opt.ngf, opt.netG, opt.norm,
