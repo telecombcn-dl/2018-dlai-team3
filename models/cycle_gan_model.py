@@ -40,14 +40,17 @@ class CycleGANModel(BaseModel):
         else:  # during test time, only load Gs
             self.model_names = ['G_A', 'G_B']
 
-        # load/define networks # The naming conversion is different from those used in the paper
+        # load/define networks
+        # The naming conversion is different from those used in the paper
         # Code (paper): G_A (G), G_B (F), D_A (D_Y), D_B (D_X)
+
+        # Dlai project modification
         # for collab setup, dirty trick
-        #Dlai project modification
         print("hello gpu_ids", self.gpu_ids[0])
-        self.gpu_ids2 = ['cuda:'+str(i) for i in self.gpu_ids]
+        self.gpu_ids2 = ['cuda:' + str(i) for i in self.gpu_ids]
         print(self.gpu_ids2)
-        #self.gpu_ids = self.gpu_ids2
+        # self.gpu_ids = self.gpu_ids2
+        
         self.netG_A = networks.define_G(opt.input_nc, opt.output_nc, opt.ngf, opt.netG, opt.norm,
                                         not opt.no_dropout, opt.init_type, opt.init_gain, self.gpu_ids2)
         self.netG_B = networks.define_G(opt.output_nc, opt.input_nc, opt.ngf, opt.netG, opt.norm,
