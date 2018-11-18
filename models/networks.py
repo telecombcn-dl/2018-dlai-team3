@@ -63,11 +63,20 @@ def init_weights(net, init_type='normal', gain=0.02):
 
 
 def init_net(net, init_type='normal', init_gain=0.02, gpu_ids=[]):
+
+    # dlai modif
+    for param in net.model.parameters():
+        param.requires_grad = False
+    num_ftrs = net.model.fc.in_features
+    net.model.fc = nn.Linear(num_ftrs,2)
+
     if len(gpu_ids) > 0:
         assert(torch.cuda.is_available())
         net.to(gpu_ids[0])
         net = torch.nn.DataParallel(net, list([i for i in range(len(gpu_ids))]))
     init_weights(net, init_type, gain=init_gain)
+
+
     return net
 
 
