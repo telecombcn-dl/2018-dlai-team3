@@ -14,7 +14,7 @@ markdown: kramdown
 ### content configuration ###
 title:       "Understanding CycleGANs"
 keywords:    "computer vision, deep learning"
-description: "Description here"
+description: "A summary of our experiments with the CycleGAN"
 source_link: "https://github.com/telecombcn-dl/2018-dlai-team3" 
 favicon:     "img/favicon.ico"
 touch_icon:  "img/apple-touch-icon.png"
