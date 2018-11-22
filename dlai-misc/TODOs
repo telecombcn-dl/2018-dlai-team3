@@ -6,6 +6,7 @@
 
 ## Understand implementation
 - [ ] Code review
+- [ ] Networks fine-tuning (see cycleGAN-networks.md)
 
 ## Development
 - [ ] Inference from pre-trained models
