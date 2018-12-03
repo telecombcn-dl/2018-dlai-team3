@@ -16,6 +16,30 @@ THINGS TO UNDERSTAND
 - losses
 	GANLoss
 
+Architecture
+============
+
+Generative networks
+	Johnson et al. [23]
+		- Perceptual losses for real-time style transfer and super-resolution.
+
+	2 stride-2 conv
+	residual blocks [18]
+		- Deep residual learning for image recognition.
+
+	2 fractionally-strided conv
+	instance normalization [53]
+		- Instance normalization: The missing ingredient for fast stylization.
+
+
+Discriminator networks
+	70x70 PatchGANs  [22,30,29]
+		- Image-to-image translation with conditional adversarial networks.
+
+		- Precomputed real-time texture synthesis with markovian generative adversarial networks.
+
+		- Photo-realistic single image superresolution using a generative adversarial network.
+
 
 REFERENCES
 ==========
@@ -61,7 +85,7 @@ REFERENCES
 TASKS
 ======
 
-
+- summaryze each network architecture
 
 - retrain with freezing 
 	-> finetuning adapted
@@ -76,3 +100,36 @@ TASKS
 
 - download a pretrained model and retrain
 	how to retrain download
+
+
+Summaries
+==========
+
+
+## Perceptual losses for real-time style transfer and super-resolution.
+
+- from feed-forward CNN +  per-pixel loss 
+   to 
+   "perceptual" losses
+   		differences between high-level image feature representations extracted from pretrained CNN
+
+
+- inputx  -> image transf. network -> ^y -> loss network (VGG-16) -> 
+                                      ys style target
+                                      yc  content target
+
+- perceptual loss is computed by a pretarined CNN -> the loss network by comparing ^y to ys and yc (style and content)
+
+
+- image transformation networks
+	no pooling layers
+	strided and fractionally strided conv for downsampling and upsampling
+
+	body
+		1)5 residual blocks
+				3x3 conv layers
+				
+		2) non-residual conv. layers: 
+			non-residual conv layer
+			spatial batch normalization
+			ReLU (except for output whithc is scaled tanh)
