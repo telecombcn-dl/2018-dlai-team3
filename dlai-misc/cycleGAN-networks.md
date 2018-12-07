@@ -48,11 +48,12 @@ REFERENCES
 	https://spark-in.me/post/unet-adventures-part-one-getting-acquainted-with-unet
 
 - fast-neural-style : 
-	buscar explicacion/descrición de la red
-	https://arxiv.org/abs/1508.06576
-	https://arxiv.org/abs/1607.08022
-	probar de reentrenarla
+	A neural algorithm of artistic Style
+		https://arxiv.org/abs/1508.06576 
+	Instance Normalization: The missing ingredient for fast stylization
+		https://arxiv.org/abs/1607.08022 
 
+	
 
 - UNet
 	https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/
