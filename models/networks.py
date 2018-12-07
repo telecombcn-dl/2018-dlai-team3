@@ -75,12 +75,15 @@ def init_net(net, init_type='normal', init_gain=0.02, gpu_ids=[]):
 
     if len(gpu_ids) > 0:
         assert(torch.cuda.is_available())
-        #net.to(gpu_ids[0])
+        
         #dlai modification
-        print("hello gpu_ids", gpu_ids[0])
-        gpu_ids2 = ['cuda:' + str(i) for i in gpu_ids]
-        print(gpu_ids2)
-        net.to(gpu_ids2[0])
+        # when training use this one
+        net.to(gpu_ids[0])
+        # when testing using this other one
+        # print("hello gpu_ids", gpu_ids[0])
+        # gpu_ids2 = ['cuda:' + str(i) for i in gpu_ids]
+        # print(gpu_ids2)
+        # net.to(gpu_ids2[0])
         net = torch.nn.DataParallel(net, list([i for i in range(len(gpu_ids))]))
     init_weights(net, init_type, gain=init_gain)
 
