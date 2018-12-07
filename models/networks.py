@@ -77,7 +77,7 @@ def init_net(net, init_type='normal', init_gain=0.02, gpu_ids=[]):
         assert(torch.cuda.is_available())
         #net.to(gpu_ids[0])
         #dlai modification
-        print("hello gpu_ids", self.gpu_ids[0])
+        print("hello gpu_ids", gpu_ids[0])
         gpu_ids2 = ['cuda:' + str(i) for i in self.gpu_ids]
         print(gpu_ids2)
         net.to(gpu_ids2[0])
