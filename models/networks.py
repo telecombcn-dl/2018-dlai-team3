@@ -78,7 +78,7 @@ def init_net(net, init_type='normal', init_gain=0.02, gpu_ids=[]):
         #net.to(gpu_ids[0])
         #dlai modification
         print("hello gpu_ids", gpu_ids[0])
-        gpu_ids2 = ['cuda:' + str(i) for i in self.gpu_ids]
+        gpu_ids2 = ['cuda:' + str(i) for i in gpu_ids]
         print(gpu_ids2)
         net.to(gpu_ids2[0])
         net = torch.nn.DataParallel(net, list([i for i in range(len(gpu_ids))]))
