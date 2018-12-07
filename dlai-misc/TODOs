@@ -1,17 +1,23 @@
 # TODO List 
 
 ## Theory
-- [ ] Read CycleGAN paper
-- [ ] Comment paper Q&A 
+- [X] Read CycleGAN paper
+- [X] Comment paper Q&A 
 
 ## Understand implementation
-- [ ] Code review
-- [ ] Networks fine-tuning (see cycleGAN-networks.md)
+- [X] Code review
+- [ ] gather info on networks (see cycleGAN-networks.md)
+
 
 ## Development
-- [ ] Inference from pre-trained models
-- [ ] Google Colab integration (inference and train)
+- [X] Google Colab integration (inference and train)
 - [ ] Google Cloud VM integration (inference and train)
+- [ ] Small Cycle-Gan from zero
+- [ ] Use trained networks with new dataset input (document it)
+- [ ] Retrain with just one unfreezed layer (fit in memory)
+- [ ] Test different layers/networks retraining with new datasets
+- [ ] Networks fine-tuning 
+
 
 ## Experiments
 
