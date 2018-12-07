@@ -2,7 +2,7 @@
 debug*
 datasets/
 _checkpoints/
-results/
+_results/
 build/
 dist/
 *.png
