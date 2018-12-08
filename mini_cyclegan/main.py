@@ -4,6 +4,7 @@ import os
 import torch
 
 from gan import GAN
+from cyclegan import CYCLEGAN
 
 """parsing and configuration"""
 
@@ -12,10 +13,17 @@ def parse_args():
     desc = "Pytorch implementation of GAN collections"
     parser = argparse.ArgumentParser(description=desc)
 
-    parser.add_argument('--dataset', type=str, default='mnist',
+    parser.add_argument('--datasetA', type=str, default='mnist',
                         choices=['mnist', 'fashion-mnist', 'cifar10',
                                  'cifar100', 'svhn', 'stl10', 'lsun-bed'],
-                        help='The name of dataset')
+                        help='The name of datasetA')
+    parser.add_argument('--datasetB', type=str, default='fashion-mnist',
+                        choices=['mnist', 'fashion-mnist', 'cifar10',
+                                 'cifar100', 'svhn', 'stl10', 'lsun-bed'],
+                        help='The name of datasetB')
+    parser.add_argument('--gan_type', type=str, default='GAN',
+                        choices=['GAN', 'CYCLEGAN'],
+                        help='GAN types')
     parser.add_argument('--split', type=str, default='',
                         help='The split flag for svhn and stl10')
     parser.add_argument('--epoch', type=int, default=50,
@@ -81,7 +89,12 @@ def main():
         torch.backends.cudnn.benchmark = True
 
     # declare instance for GAN
-    gan = GAN(args)
+    if args.gan_type == 'GAN':
+        gan = GAN(args)
+    elif args.gan_type == 'CYCLEGAN':
+        gan = CYCLEGAN(args)
+    else:
+        raise Exception("[!] Unknown GAN type. Please use 'GAN' or 'CYCLEGAN'")
 
     # launch the graph in a session
     gan.train()
