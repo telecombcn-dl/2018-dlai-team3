@@ -26,17 +26,25 @@ if torch.cuda.device_count() > 1:
 
 opt = Namespace(
     dataroot='./datasets/celebs/',
-    batch_size=12, # 384s/epoch
+    batch_size=28, # 28 for colab, 15 for local
     loadSize=71,
     fineSize=64,
     display_winsize=64,
     input_nc=3,# num channels
     output_nc=3,# num channels
-    ngf=64,
-    ndf=64,
-    netD='basic',
-    netG='resnet_9blocks',
-    n_layers_D=3,
+    ngf=64,   # num cnn outputs (multiplier)
+    ndf=64,   # num cnn outputs (multiplier)
+    #ngf=32,
+    #ndf=32,
+    
+    #netG='resnet_9blocks',
+    netG='resnet_6blocks',
+    
+    #netD='basic',
+    #n_layers_D=3,
+    netD='n_layers',
+    n_layers_D=1,
+    
     gpu_ids=['0'],
     name='caricatures_cyclegan64',
     dataset_mode='unaligned',
@@ -64,11 +72,11 @@ opt = Namespace(
     display_server='http://localhost',
     display_env='main',
     display_port=8097,
-    update_html_freq=1000,
+    update_html_freq=250,
     print_freq=250,
     save_latest_freq=1000,
     save_epoch_freq=1,
-    epoch_count=17,
+    epoch_count=7,
     phase='train',
     niter=100,
     niter_decay=1,
@@ -78,7 +86,7 @@ opt = Namespace(
     pool_size=50,
     lr_policy='lambda',
     lr_decay_iters=12,
-    continue_train=False,
+    continue_train=True,
     lambda_A=10.0,
     lambda_B=10.0,
     no_html=False
