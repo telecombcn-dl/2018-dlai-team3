@@ -2,7 +2,8 @@
 title: "The puzzle pieces"
 bg: #9AD1F5
 color: black
-fa-icon: fa-puzzle-piece
+style: center
+fa-icon: puzzle-piece
 ---
 
 # A brief history of image to image solutions

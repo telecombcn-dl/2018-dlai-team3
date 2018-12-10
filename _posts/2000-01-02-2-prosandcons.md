@@ -2,8 +2,9 @@
 title: "PROS & CONS"
 bg: blue
 color: white
-fa-icon: fa-ballot-check
+fa-icon: ballot-check
 ---
+
 ## Advantages and disadvantages of using a cicleGAN for image2image generation.
 
 ### PROS:
