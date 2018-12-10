@@ -9,7 +9,7 @@ from gan import discriminator
 from gan import generator
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', required=False, default='apple2orange',  help='')
+parser.add_argument('--dataset', required=False, default='horse2zebra',  help='')
 parser.add_argument('--train_subfolder', required=False, default='train',  help='')
 parser.add_argument('--test_subfolder', required=False, default='test',  help='')
 parser.add_argument('--input_ngc', type=int, default=3, help='input channel for generator')
