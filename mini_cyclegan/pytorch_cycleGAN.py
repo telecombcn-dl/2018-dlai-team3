@@ -354,17 +354,16 @@ for epoch in range(opt.train_epoch):
             if n > 9:
                 break
 
-    end_time = time.time()
-    total_ptime = end_time - start_time
-    train_hist['total_ptime'].append(total_ptime)
+end_time = time.time()
+total_ptime = end_time - start_time
+train_hist['total_ptime'].append(total_ptime)
 
-    print("Avg one epoch ptime: %.2f, total %d epochs ptime: %.2f" % (
-        torch.mean(torch.FloatTensor(train_hist['per_epoch_ptimes'])),
-        opt.train_epoch, total_ptime))
-    print("Training finish!... save training results")
-    torch.save(G_A.state_dict(), root + model + 'generatorA_param.pkl')
-    torch.save(G_B.state_dict(), root + model + 'generatorB_param.pkl')
-    torch.save(D_A.state_dict(), root + model + 'discriminatorA_param.pkl')
-    torch.save(D_B.state_dict(), root + model + 'discriminatorB_param.pkl')
-    with open(root + model + 'train_hist.pkl', 'wb') as f:
-        pickle.dump(train_hist, f)
+print("Avg one epoch ptime: %.2f, total %d epochs ptime: %.2f" % (
+    torch.mean(torch.FloatTensor(train_hist['per_epoch_ptimes'])),
+    opt.train_epoch, total_ptime))
+torch.save(G_A.state_dict(), root + model + 'generatorA_param.pkl')
+torch.save(G_B.state_dict(), root + model + 'generatorB_param.pkl')
+torch.save(D_A.state_dict(), root + model + 'discriminatorA_param.pkl')
+torch.save(D_B.state_dict(), root + model + 'discriminatorB_param.pkl')
+with open(root + model + 'train_hist.pkl', 'wb') as f:
+    pickle.dump(train_hist, f)
