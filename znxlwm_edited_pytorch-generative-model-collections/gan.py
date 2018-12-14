@@ -1,76 +1,65 @@
-import torch, time, os, pickle
-import numpy as np
+import torch
 import torch.nn as nn
-import torch.optim as optim
-
-from dataloader import dataloader
-import utils as utils
-
+import torch.nn.functional as F
 
 class generator(nn.Module):
-    # Network Architecture is exactly same as in infoGAN (https://arxiv.org/abs/1606.03657)
-    # Architecture : FC1024_BR-FC7x7x128_BR-(64)4dc2s_BR-(1)4dc2s_S
-    def __init__(self, input_dim=100, output_dim=1, input_size=32):
+    def __init__(self, input_nc, output_nc, ngf=32):
         super(generator, self).__init__()
-        self.input_dim = input_dim
-        self.output_dim = output_dim
-        self.input_size = input_size
+        self.input_nc = input_nc
+        self.output_nc = output_nc
+        self.ngf = ngf
+        self.conv1 = nn.Conv2d(input_nc, ngf, 7, 1, 0)
+        self.conv1_norm = nn.InstanceNorm2d(ngf)
+        self.conv2 = nn.Conv2d(ngf, ngf * 2, 3, 2, 1)
+        self.conv2_norm = nn.InstanceNorm2d(ngf * 2)
+        self.conv3 = nn.Conv2d(ngf * 2, ngf * 4, 3, 2, 1)
+        self.conv3_norm = nn.InstanceNorm2d(ngf * 4)
 
-        self.fc = nn.Sequential(
-            nn.Linear(self.input_dim, 1024),
-            nn.BatchNorm1d(1024),
-            nn.ReLU(),
-            nn.Linear(1024, 128 * (self.input_size // 4) * (self.input_size // 4)),
-            nn.BatchNorm1d(128 * (self.input_size // 4) * (self.input_size // 4)),
-            nn.ReLU(),
-        )
-        self.deconv = nn.Sequential(
-            nn.ConvTranspose2d(128, 64, 4, 2, 1),
-            nn.BatchNorm2d(64),
-            nn.ReLU(),
-            nn.ConvTranspose2d(64, self.output_dim, 4, 2, 1),
-            nn.Tanh(),
-        )
-        utils.initialize_weights(self)
+        self.deconv1 = nn.ConvTranspose2d(ngf * 4, ngf * 2, 3, 2, 1, 1)
+        self.deconv1_norm = nn.InstanceNorm2d(ngf * 2)
+        self.deconv2 = nn.ConvTranspose2d(ngf * 2, ngf, 3, 2, 1, 1)
+        self.deconv2_norm = nn.InstanceNorm2d(ngf)
+        self.deconv3 = nn.Conv2d(ngf, output_nc, 7, 1, 0)
 
+    # forward method
     def forward(self, input):
-        x = self.fc(input)
-        x = x.view(-1, 128, (self.input_size // 4), (self.input_size // 4))
-        x = self.deconv(x)
+        x = F.pad(input, (3, 3, 3, 3), 'reflect')
+        x = F.relu(self.conv1_norm(self.conv1(x)))
+        x = F.relu(self.conv2_norm(self.conv2(x)))
+        x = F.relu(self.conv3_norm(self.conv3(x)))
+        x = F.relu(self.deconv1_norm(self.deconv1(x)))
+        x = F.relu(self.deconv2_norm(self.deconv2(x)))
+        x = F.pad(x, (3, 3, 3, 3), 'reflect')
+        o = F.tanh(self.deconv3(x))
 
-        return x
+        return o
+
 
 class discriminator(nn.Module):
-    # Network Architecture is exactly same as in infoGAN (https://arxiv.org/abs/1606.03657)
-    # Architecture : (64)4c2s-(128)4c2s_BL-FC1024_BL-FC1_S
-    def __init__(self, input_dim=1, output_dim=1, input_size=32):
+    def __init__(self, input_nc, output_nc, ndf=64):
         super(discriminator, self).__init__()
-        self.input_dim = input_dim
-        self.output_dim = output_dim
-        self.input_size = input_size
+        self.input_nc = input_nc
+        self.output_nc = output_nc
+        self.ndf = ndf
+        self.conv1 = nn.Conv2d(input_nc, ndf, 4, 2, 1)
+        self.conv2 = nn.Conv2d(ndf, ndf * 2, 4, 2, 1)
+        self.conv2_norm = nn.InstanceNorm2d(ndf * 2)
+        self.conv3 = nn.Conv2d(ndf * 2, ndf * 4, 4, 2, 1)
+        self.conv3_norm = nn.InstanceNorm2d(ndf * 4)
+        self.conv4 = nn.Conv2d(ndf * 4, ndf * 8, 4, 1, 1)
+        self.conv4_norm = nn.InstanceNorm2d(ndf * 8)
+        self.conv5 = nn.Conv2d(ndf * 8, output_nc, 4, 1, 1)
 
-        self.conv = nn.Sequential(
-            nn.Conv2d(self.input_dim, 64, 4, 2, 1),
-            nn.LeakyReLU(0.2),
-            nn.Conv2d(64, 128, 4, 2, 1),
-            nn.BatchNorm2d(128),
-            nn.LeakyReLU(0.2),
-        )
-        self.fc = nn.Sequential(
-            nn.Linear(128 * (self.input_size // 4) * (self.input_size // 4), 1024),
-            nn.BatchNorm1d(1024),
-            nn.LeakyReLU(0.2),
-            nn.Linear(1024, self.output_dim),
-            nn.Sigmoid(),
-        )
-        utils.initialize_weights(self)
-
+    # forward method
     def forward(self, input):
-        x = self.conv(input)
-        x = x.view(-1, 128 * (self.input_size // 4) * (self.input_size // 4))
-        x = self.fc(x)
+        x = F.leaky_relu(self.conv1(input), 0.2)
+        x = F.leaky_relu(self.conv2_norm(self.conv2(x)), 0.2)
+        x = F.leaky_relu(self.conv3_norm(self.conv3(x)), 0.2)
+        x = F.leaky_relu(self.conv4_norm(self.conv4(x)), 0.2)
+        x = self.conv5(x)
 
         return x
+<<<<<<< HEAD:znxlwm_edited_pytorch-generative-model-collections/gan.py
 
 class GAN(object):
     def __init__(self, args):
@@ -232,3 +221,5 @@ class GAN(object):
 
         self.G.load_state_dict(torch.load(os.path.join(save_dir, self.model_name + '_G.pkl')))
         self.D.load_state_dict(torch.load(os.path.join(save_dir, self.model_name + '_D.pkl')))
+=======
+>>>>>>> 62b009dbd2e1500eb21e26c6bce428a63c881dc7:mini_cyclegan/gan.py
