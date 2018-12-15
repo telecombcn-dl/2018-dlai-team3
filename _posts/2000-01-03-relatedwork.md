@@ -34,7 +34,7 @@ This will be further explaned later on.
 
 ### [Precomputed Real-Time Texture Synthesis with Markovian Generative Adversarial Networks](https://arxiv.org/pdf/1604.04382.pdf)
 
-This paper introduce
+This paper introduces a procedure to evaluate changes in 
 
 ### [Photo-Realistic Single Image Super-Resolution Using a Generative AdversarialNetwork](https://arxiv.org/pdf/1609.04802.pdf)
 
