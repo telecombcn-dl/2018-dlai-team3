@@ -10,12 +10,12 @@ When it comes to image to image translation there have been several implementati
 ### [Neural Style Transfer](https://arxiv.org/abs/1508.06576)
 
 <p class="center"><img src="./img/basicstyletransfer.png">
-<br>Proposed network</p>
+<br />Proposed network</p>
 
 The first implementation of style transfer in the realm of neural networks took a CNN trained for image classification and separated the part of it that learnt texture information. Applying it to a new image. It used a square error loss  to minimize the distance between the 2 feature representations extracted from passing a white noise image and a picture trough the network. 
 The result was that the image had a different texture applied but kept the original shape so it had a clear artificial look. CycleGANs on the othe hand learn a mapping between the collections of images rather than between 2 images and this allows for more realistic and flexible transformations. 
 
-<p class="center"><img src="./img/neuralstylecomparison.png"><br>Comparison of method results</p>
+<p class="center"><img src="./img/neuralstylecomparison.png"><br />Comparison of method results</p>
 
 ### [Generative Adversarial Networks(GANs)](https://arxiv.org/pdf/1406.2661.pdf)
 
@@ -31,7 +31,7 @@ This solution uses applies a condition to GANs in order to learn a translation b
 ### __Other methods__
 Other methods have been presented that rely on predefined similarities between the input and output. CycleGANs overcome this by letting the networks learn the relationship between the domains.
 
-<p class="center"><img src="./img/comparisonmethods.jpg"><br>Comparison with other methods</p>
+<p class="center"><img src="./img/comparisonmethods.jpg"><br />Comparison with other methods</p>
 
 ### [CycleGANs](https://arxiv.org/abs/1703.10593)
 
