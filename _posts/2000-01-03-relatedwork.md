@@ -23,8 +23,8 @@ The result was that the image had a different texture applied but kept the origi
 <p class="caption"><img src="./img/GAN_diagram.jpg">
 <br />Credit: Santi Pascual. From his <a href="https://docs.google.com/presentation/d/19ytP7ZStPx8euB-V6HexpunbeACBgmlBnKFUJ1ocl2Q/edit#slide=id.g28086851ef_0_0">Deep Generative Models II</a> lecture</p>
 
-This solution made a significan change in the success of image to image translatio. It consists of having two models trained simultaneously: G, a generative model which generates images by learning the distribution of information, and D, a discriminative model that is trained to distinguish wether a sample came from the training data rather than G.
-This method generates images from random noise and has attained great results in image generation. It succeeds in generating images that look indistinguishable from real images from the generated domain. However, when generating information from an image much of the contextual information is lost and it's imposible to go back to the original data from the generated content.
+This solution made a significant change in the success of image to image translation. It consists of having two models trained simultaneously: G, a generative model which generates images by learning the distribution of information, and D, a discriminative model that is trained to distinguish whether a sample came from the training data rather than G.
+This method generates images from random noise and has attained great results in image generation. It succeeds in generating images that look indistinguishable from real images from the generated domain. However, when generating information from an image much of the contextual information is lost and it's impossible to go back to the original data from the generated content.
 
 <br>
 ### [Conditional Generative Adversarial Networks](https://arxiv.org/pdf/1406.2661.pdf)
