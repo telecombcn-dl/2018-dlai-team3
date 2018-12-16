@@ -32,8 +32,6 @@ Other methods have been presented that rely on predefined similarities between t
 
 ![Comparison with other methods](./img/comparisonmethods.jpg)
 
-### CycleGans
+### CycleGANs
 
-![CycleGAN mapping of domains](./img/cyclegadiagram.png)
-
-![Simplified view of CycleGAN architecture ](./img/simplifiedcyclegan.png)
+| ![Simplified view of CycleGAN architecture 1](./img/simplifiedcyclegan_1.png) | ![Simplified view of CycleGAN architecture 2](./img/simplifiedcyclegan_2.png) |
