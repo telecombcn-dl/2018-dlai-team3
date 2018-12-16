@@ -2,7 +2,6 @@
 title: "Related Work"
 bg: #9AD1F5
 color: black
-style: center
 fa-icon: puzzle-piece
 ---
 
