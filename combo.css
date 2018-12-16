@@ -9,7 +9,7 @@ p {
     text-align: justify;
 }
 
-p .caption {
+.caption {
     text-align: center;
     font-style: italic;
 }
