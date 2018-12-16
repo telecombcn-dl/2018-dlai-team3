@@ -19,7 +19,7 @@ The result was that the image had a different texture applied but kept the origi
 
 ### [Generative Adversarial Networks(GANs)](https://arxiv.org/pdf/1406.2661.pdf)
 
-![](./img/GAN_diagram.jpg)
+<p class="center"><img src="./img/GAN_diagram.jpg"></p>
 
 This solution made a significan change in the success of image to image translatio. It consists of having two models trained simultaneously: G, a generative model which generates images by learning the distribution of information, and D, a discriminative model that is trained to distinguish wether a sample came from the training data rather than G.
 This method generates images from random noise and has attained great results in image generation. It succeeds in generating images that look indistinguishable from real images from the generated domain. However, when generating information from an image much of the contextual information is lost and it's imposible to go back to the original data from the generated content.
@@ -31,8 +31,9 @@ This solution uses applies a condition to GANs in order to learn a translation b
 ### __Other methods__
 Other methods have been presented that rely on predefined similarities between the input and output. CycleGANs overcome this by letting the networks learn the relationship between the domains.
 
-![Comparison with other methods](./img/comparisonmethods.jpg)
+<p class="center"><img src="./img/comparisonmethods.jpg">Comparison with other methods</p>
 
 ### [CycleGANs](https://arxiv.org/abs/1703.10593)
 
-| ![Simplified view of CycleGAN architecture 1](./img/simplifiedcyclegan_1.png) | ![Simplified view of CycleGAN architecture 2](./img/simplifiedcyclegan_2.png) |
+![Simplified view of CycleGAN architecture 1](./img/simplifiedcyclegan_1.png)!
+[Simplified view of CycleGAN architecture 2](./img/simplifiedcyclegan_2.png) |
