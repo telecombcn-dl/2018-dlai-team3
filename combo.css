@@ -6,5 +6,5 @@
 {% include css/main.css %}
 
 p {
-    text align: justify;
+    text-align: justify;
 }
