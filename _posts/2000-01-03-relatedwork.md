@@ -9,17 +9,17 @@ When it comes to image to image translation there have been several implementati
 
 ### [Neural Style Transfer](https://arxiv.org/abs/1508.06576)
 
-<p class="center"><img src="./img/basicstyletransfer.png">
+<p class="caption"><img src="./img/basicstyletransfer.png">
 <br />Proposed network</p>
 
 The first implementation of style transfer in the realm of neural networks took a CNN trained for image classification and separated the part of it that learnt texture information. Applying it to a new image. It used a square error loss  to minimize the distance between the 2 feature representations extracted from passing a white noise image and a picture trough the network. 
 The result was that the image had a different texture applied but kept the original shape so it had a clear artificial look. CycleGANs on the othe hand learn a mapping between the collections of images rather than between 2 images and this allows for more realistic and flexible transformations. 
 
-<p class="center"><img src="./img/neuralstylecomparison.png"><br />Comparison of method results</p>
+<p class="caption"><img src="./img/neuralstylecomparison.png"><br />Comparison of method results</p>
 
 ### [Generative Adversarial Networks(GANs)](https://arxiv.org/pdf/1406.2661.pdf)
 
-<p class="center"><img src="./img/GAN_diagram.jpg"></p>
+<p class="caption"><img src="./img/GAN_diagram.jpg"></p>
 
 This solution made a significan change in the success of image to image translatio. It consists of having two models trained simultaneously: G, a generative model which generates images by learning the distribution of information, and D, a discriminative model that is trained to distinguish wether a sample came from the training data rather than G.
 This method generates images from random noise and has attained great results in image generation. It succeeds in generating images that look indistinguishable from real images from the generated domain. However, when generating information from an image much of the contextual information is lost and it's imposible to go back to the original data from the generated content.
@@ -31,7 +31,7 @@ This solution uses applies a condition to GANs in order to learn a translation b
 ### Other methods
 Other methods have been presented that rely on predefined similarities between the input and output. CycleGANs overcome this by letting the networks learn the relationship between the domains.
 
-<em><img src="./img/comparisonmethods.jpg"><br />Comparison with other methods</em>
+<p class="caption"><img src="./img/comparisonmethods.jpg"><br />Comparison with other methods</em>
 
 ### [CycleGANs](https://arxiv.org/abs/1703.10593)
 
@@ -48,6 +48,6 @@ To do so, an easy but smart idea comes to mind. What if we train two GANs togeth
         </th>
     </tr>
 </table>
-<em class="center">Simplified view of CycleGAN architecture</em>
+<p class="caption">Simplified view of CycleGAN architecture</p>
 
 The key of the CycleGANs is the loss used to train an achieve the best performance. The cycle consistency loss -which is detailed in the [Our Work](https://telecombcn-dl.github.io/2018-dlai-team3/#work) section below- takes into account the losses of the generators, the losses of the discriminators, and a cycle loss that evaluates the reconstructed image comparing it with the original one.
