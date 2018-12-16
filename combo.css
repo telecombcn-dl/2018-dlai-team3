@@ -1,9 +1,7 @@
----
----
+{% include css/base.css %}
+{% include css/skeleton.css %}
+{% include css/main.css %}
 
 p {
     text align: justify;
 }
-{% include css/base.css %}
-{% include css/skeleton.css %}
-{% include css/main.css %}
