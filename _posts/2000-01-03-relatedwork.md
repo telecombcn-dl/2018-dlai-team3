@@ -31,7 +31,7 @@ This solution uses applies a condition to GANs in order to learn a translation b
 ### Other methods
 Other methods have been presented that rely on predefined similarities between the input and output. CycleGANs overcome this by letting the networks learn the relationship between the domains.
 
-<p class="caption"><img src="./img/comparisonmethods.jpg"><br />Comparison with other methods</em>
+<p class="caption"><img src="./img/comparisonmethods.jpg"><br />Comparison with other methods</p>
 
 ### [CycleGANs](https://arxiv.org/abs/1703.10593)
 
