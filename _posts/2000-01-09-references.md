@@ -7,9 +7,17 @@ fa-icon: search-plus
 ---
 
  
-1. JY Zhu, T Park, P Isola, AA Efros  Unpaired image-to-image translation using cycle-consistent adversarial networks, arXiv preprint (2017)
+1. [A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576) 
 
+2. [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
 
-2. Kaidi Cao, JingG Liao, Lu Yuan CariGANs: Unpaired Photo-to-Caricature Translation, ACM Transactions on Graphics, Vol. 37, No. 6, Article 244. Publication date: November 2018
+3. [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593)
 
+4. [CariGANs: Unpaired Photo-to-Caricature Translation](http://ai.stanford.edu/~kaidicao/carigan.pdf)
+
+5. [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/abs/1502.03167)
+
+6. [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+
+7. [Conditional Generative Adversarial Networks](https://arxiv.org/pdf/1406.2661.pdf)
 
