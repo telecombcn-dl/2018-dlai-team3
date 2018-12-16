@@ -35,5 +35,6 @@ Other methods have been presented that rely on predefined similarities between t
 
 ### [CycleGANs](https://arxiv.org/abs/1703.10593)
 
-![Simplified view of CycleGAN architecture 1](./img/simplifiedcyclegan_1.png)
-![Simplified view of CycleGAN architecture 2](./img/simplifiedcyclegan_2.png)
+
+<p class="center"><img src="./img/simplifiedcyclegan_1.png"></p>
+<p class="center"><img src="./img/simplifiedcyclegan_2.png"><br />Simplified view of CycleGAN architecture</p>
