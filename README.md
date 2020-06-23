@@ -1,3 +1,13 @@
+# Our work
+
+This is the project of [Deep Learning for Artificial Intelligence](https://telecombcn-dl.github.io/2018-dlai/) course of the MATT Master's degree at Universitat Politècnica de Catalunya carried out by 4 students. Our work is described in this [github pages](https://telecombcn-dl.github.io/2018-dlai-team3/).
+
+The aim of this project was to understand how CycleGANs networks work, and we did so by creating a naive model reduction called mini-cyclegan and applying the original model to a new task.
+
+The original readme is attached below: 
+
+***
+
 <img src='imgs/horse2zebra.gif' align="right" width=384>
 
 <br><br><br>
